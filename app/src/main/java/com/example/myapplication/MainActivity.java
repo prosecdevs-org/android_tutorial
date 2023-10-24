@@ -44,9 +44,10 @@ public class MainActivity extends AppCompatActivity {
 //                startActivity(intent);
 //                Toast.makeText(MainActivity.this, editText.getText().toString(), Toast.LENGTH_SHORT).show();
                 DatePickerDialog datePickerDialog = new DatePickerDialog(MainActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @SuppressLint("SetTextI18n")
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
-                        txt1.setText(dayOfMonth+"-"+month+"-"+year);
+                        txt1.setText(dayOfMonth+"-"+(month+1)+"-"+year);
                     }
                 },year,month,dayOfMonth);
                 datePickerDialog.show();
