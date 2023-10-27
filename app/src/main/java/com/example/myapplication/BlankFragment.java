@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,11 +29,14 @@ public class BlankFragment extends Fragment {
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fragmentManager = getParentFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment1, new BlankFragment2());
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+//                FragmentManager fragmentManager = getParentFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.fragment1, new BlankFragment2());
+//                fragmentTransaction.addToBackStack(null);
+//                fragmentTransaction.commit();
+                Bundle bundle = new Bundle();
+                bundle.putString("key","value");
+                Navigation.findNavController(view).navigate(R.id.blankFragment2,bundle);
             }
         });
 
