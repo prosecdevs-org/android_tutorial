@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -13,20 +14,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.myapplication.databinding.FragmentBlankBinding;
+
 
 public class BlankFragment extends Fragment {
 
 
-    Button b2;
+    FragmentBlankBinding binding;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_blank, container, false);
-        b2 = view.findViewById(R.id.toFragment2);
-        b2.setOnClickListener(new View.OnClickListener() {
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_blank, container, false);
+        binding.fragment1Txt.setText("Hello Someone");
+        binding.toFragment2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 //                FragmentManager fragmentManager = getParentFragmentManager();
@@ -42,6 +44,6 @@ public class BlankFragment extends Fragment {
 
 
 
-        return view;
+        return binding.getRoot();
     }
 }
